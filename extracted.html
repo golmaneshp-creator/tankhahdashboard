@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>منوی تنخواه شهروند</title>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+<div class="demo-badge">پارسا گل‌منش</div>
+<div class="container mx-auto px-4 py-8">
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-gray-800 mb-2">منوی تنخواه شهروند</h1>
+<p class="text-gray-600">سامانه مدیریت تنخواه</p>
+</div>
+<div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+<!-- بخش ورود کاربر -->
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h2 class="text-xl font-semibold text-gray-800">ورود کاربر</h2>
+</div>
+<form class="space-y-4" id="userForm">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">نام کاربری</label>
+<input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="userUsername" placeholder="مثال: 7131111" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">رمز عبور</label>
+<input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="userPassword" placeholder="مثال: 101010" type="password"/>
+</div>
+<button class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200" type="submit">
+                        ورود به پنل کاربری
+                    </button>
+</form>
+<div class="mt-4 p-3 bg-gray-50 rounded-md">
+<p class="text-xs text-gray-600 text-center">
+<strong>تست:</strong> نام کاربری: 123 | رمز: 123
+                    </p>
+</div>
+</div>
+<!-- بخش ورود مدیر -->
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h2 class="text-xl font-semibold text-gray-800">ورود مدیر</h2>
+</div>
+<form class="space-y-4" id="adminForm">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">نام کاربری مدیر</label>
+<input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" id="adminUsername" placeholder="مثال: 7130000" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">رمز عبور مدیر</label>
+<input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" id="adminPassword" placeholder="مثال: 123" type="password"/>
+</div>
+<button class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200" type="submit">
+                        ورود به پنل مدیریت
+                    </button>
+</form>
+<div class="mt-4 p-3 bg-gray-50 rounded-md">
+<p class="text-xs text-gray-600 text-center">
+<strong>تست:</strong> نام کاربری: 7134289 | رمز: 4289
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- صفحه پنل کاربری -->
+<div class="hidden min-h-screen bg-gray-50" id="userPanel">
+<!-- هدر داشبورد -->
+<div class="bg-white shadow-sm border-b">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-blue-600">داشبورد کاربری</h1>
+<button class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition" onclick="logout()">
+                    خروج
+                </button>
+</div>
+</div>
+<div class="container mx-auto px-4 py-6">
+<!-- اطلاعات کاربر -->
+<div class="grid md:grid-cols-3 gap-6 mb-6">
+<div class="bg-white rounded-lg shadow p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center ml-3">
+<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">مشخصات کاربر</h3>
+</div>
+<div class="space-y-2 text-sm">
+<p><span class="font-medium">کد کاربری:</span> <span id="userCode">7133060</span></p>
+<p><span class="font-medium">نام مرکز:</span> <span id="centerName">بیهقی</span></p>
+<p><span class="font-medium">تنخواه‌دار:</span> <span id="name">حمید غیبی-حسن رحیمی</span></p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center ml-3">
+<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">اطلاعات بانکی</h3>
+</div>
+<div class="space-y-2 text-sm">
+<p><span class="font-medium">شماره حساب:</span> <span id="accountNumber">4001002983832</span></p>
+<p><span class="font-medium">کد بانک:</span> <span id="bankCode">34563</span></p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center ml-3">
+<svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">آمار تنخواه</h3>
+</div>
+<div class="space-y-2 text-sm">
+<p><span class="font-medium">تعداد درخواست پرداخت نشده:</span> <span class="text-blue-600" id="pendingRequestsCount">0</span></p>
+<p><span class="font-medium">مانده تنخواه نشده:</span> <span class="text-green-600" id="pendingRequestsAmount">0 ریال</span></p>
+</div>
+</div>
+</div>
+<!-- دکمه ایجاد تنخواه جدید -->
+<div class="mb-6 flex gap-3">
+<button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center" onclick="showNewPettyCashForm()">
+<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    ایجاد تنخواه جدید
+                </button>
+<button class="hidden bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center" id="addNewExpenseBtn" onclick="addNewExpenseCategory()">
+<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                  هزینه جدید
+                </button>
+</div>
+<!-- فرم ایجاد تنخواه جدید -->
+<div class="hidden bg-white rounded-lg shadow p-6 mb-6" id="newPettyCashForm">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">درخواست تنخواه جدید</h3>
+<form class="space-y-4" id="pettyCashForm">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">سرفصل هزینه</label>
+<select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="expenseCategory">
+<option value="">انتخاب سرفصل هزینه</option>
+</select>
+</div>
+<div class="hidden mt-3" id="centerSelectionContainer">
+<label class="block text-sm font-medium text-gray-700 mb-2">مرکز هزینه</label>
+<select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" id="expenseCenter">
+<option value="">انتخاب مرکز هزینه</option>
+</select>
+</div>
+<!-- بخش وارد کردن هزینه‌های جزئی -->
+<div class="hidden" id="expenseDetailsSection">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex justify-between items-center mb-3">
+<h4 class="text-md font-semibold text-gray-700">جزئیات هزینه: <span id="currentCategoryTitle"></span></h4>
+<button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition" onclick="confirmCurrentExpense()" type="button">
+                                    تایید هزینه
+                                </button>
+</div>
+<div id="expenseRows">
+<!-- ردیف‌های هزینه اینجا اضافه می‌شوند -->
+</div>
+<div class="mt-3 space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-600">تعداد آیتم: <span id="expenseCount">0</span></span>
+<span class="text-sm font-semibold text-gray-700">جمع: <span id="totalAmount">0</span> ریال</span>
+</div>
+<div class="bg-blue-50 p-2 rounded text-xs">
+<div class="flex justify-between">
+<span>جمع کل تنخواه:</span>
+<span class="font-semibold text-blue-600" id="grandTotalAmount">0 ریال</span>
+</div>
+<div class="flex justify-between">
+<span>در انتظار پرداخت:</span>
+<span class="font-semibold text-green-600" id="remainingAmount">0 ریال</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- نمایش هزینه‌های تایید شده -->
+<div id="confirmedExpensesContainer">
+<!-- هزینه‌های تایید شده اینجا نمایش داده می‌شوند -->
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">توضیحات</label>
+<textarea class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="requestDescription" placeholder="توضیحات تکمیلی درخواست..." rows="3"></textarea>
+</div>
+<div class="flex gap-3">
+<button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition" type="submit">
+                            تایید نهایی تنخواه
+                        </button>
+<button class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition" onclick="hideNewPettyCashForm()" type="button">
+                            انصراف
+                        </button>
+</div>
+</form>
+</div>
+<!-- لیست تنخواه های قبلی -->
+<div class="bg-white rounded-lg shadow">
+<div class="p-6 border-b">
+<h3 class="text-lg font-semibold text-gray-800">تنخواه های قبلی</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">شماره</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">عنوان</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">مبلغ</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">تاریخ</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">وضعیت</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">پرداخت شده</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">عملیات</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200" id="pettyCashList">
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- صفحه پرینت و خلاصه -->
+<div class="hidden min-h-screen bg-gray-50 p-6" id="adminPanel">
+<div class="bg-white shadow-sm border-b">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-green-600">پنل مدیریت سیستم</h1>
+<button class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition" onclick="logout()">خروج</button>
+</div>
+</div>
+<!-- تب‌ها -->
+<div class="mb-6">
+<div class="border-b border-gray-200">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<button class="admin-tab-btn active border-green-500 text-green-600 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" id="requestsTab" onclick="showAdminTab('requests')">
+              مدیریت تنخواه‌ها
+          </button>
+<button class="admin-tab-btn border-transparent text-gray-500 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" id="usersTab" onclick="showAdminTab('users')">
+              مدیریت کاربران
+          </button>
+<button class="admin-tab-btn border-transparent text-gray-500 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" id="expensesTab" onclick="showAdminTab('expenses')">
+              مدیریت هزینه‌ها
+          </button>
+</nav>
+</div>
+</div>
+<div class="admin-tab-content" id="requestsTabContent">
+<div id="adminRequestsSection">
+<h2 class="text-xl font-bold mb-4">درخواست‌های تنخواه</h2>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-6 py-3">شماره</th>
+<th class="px-6 py-3">درخواست‌کننده</th>
+<th class="px-6 py-3">مرکز</th>
+<th class="px-6 py-3">مبلغ</th>
+<th class="px-6 py-3">تاریخ</th>
+<th class="px-6 py-3">وضعیت</th>
+<th class="px-6 py-3">پرداخت شده</th>
+<th class="px-6 py-3">عملیات</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200" id="adminPettyCashList"></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="admin-tab-content hidden" id="usersTabContent">
+<h2 class="text-xl font-bold mb-4">مدیریت کاربران (قابل ویرایش)</h2>
+<div id="userManagementSection" class="bg-white p-4 rounded-lg shadow">
+  <div class="mb-3 flex gap-2">
+    <button class="bg-green-600 text-white px-3 py-2 rounded" onclick="addUserRow()">افزودن ردیف</button>
+    <button class="bg-blue-600 text-white px-3 py-2 rounded" onclick="saveUsers()">ذخیره تغییرات</button>
+    <button class="bg-gray-500 text-white px-3 py-2 rounded" onclick="resetUsers()">بارگذاری مجدد</button>
+    <button class="bg-yellow-500 text-white px-3 py-2 rounded" onclick="exportUsers()">خروجی JSON</button>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full border table-auto" id="usersEditableTable">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-3 py-2">user</th>
+          <th class="px-3 py-2">pass</th>
+          <th class="px-3 py-2">code</th>
+          <th class="px-3 py-2">center</th>
+          <th class="px-3 py-2">name</th>
+          <th class="px-3 py-2">account</th>
+          <th class="px-3 py-2">bankcode</th>
+          <th class="px-3 py-2">total</th>
+          <th class="px-3 py-2">hazinemojaz</th>
+          <th class="px-3 py-2">چندمرکزی</th>
+          <th class="px-3 py-2">عملیات</th>
+        </tr>
+      </thead>
+      <tbody id="usersTableBody"></tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div class="admin-tab-content hidden" id="expensesTabContent">
+<h2 class="text-xl font-bold mb-4">مدیریت هزینه‌ها</h2>
+<div id="expensesManagementSection" class="bg-white p-4 rounded-lg shadow">
+  <div class="mb-3 flex gap-2">
+    <button class="bg-blue-600 text-white px-3 py-2 rounded" onclick="saveExpenses()">ذخیره تغییرات</button>
+    <button class="bg-green-600 text-white px-3 py-2 rounded" onclick="resetExpenses()">بازنشانی</button>
+    <button class="bg-yellow-500 text-white px-3 py-2 rounded" onclick="exportExpenses()">خروجی JSON</button>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full border table-auto" id="expensesEditableTable">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-3 py-2 text-right">عنوان سرفصل هزینه</th>
+          <th class="px-3 py-2 text-center">F</th>
+          <th class="px-3 py-2 text-center">S</th>
+          <th class="px-3 py-2 text-center">TF</th>
+          <th class="px-3 py-2 text-center">TS</th>
+        </tr>
+      </thead>
+      <tbody id="expensesTableBody"></tbody>
+    </table>
+  </div>
+  <h3 class="text-lg font-semibold mt-6 mb-2">مدیریت مراکز</h3>
+  <table class="w-full border">
+    <thead class="bg-gray-100"><tr><th class="px-3 py-2">نام مرکز</th><th class="px-3 py-2">توضیحات</th></tr></thead>
+    <tbody id="centersTableBody"></tbody>
+  </table>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+  <button id="usersTab" class="admin-tab-btn bg-gray-200 px-3 py-2 rounded" onclick="showAdminTab('usersTab')">مدیریت کاربران</button>
+  <button id="expensesTab" class="admin-tab-btn bg-gray-200 px-3 py-2 rounded" onclick="showAdminTab('expensesTab')">مدیریت هزینه‌ها</button>
+  <button id="requestsTab" class="admin-tab-btn bg-gray-200 px-3 py-2 rounded" onclick="showAdminTab('requestsTab')">درخواست‌ها</button>
+</div>
+<div class="admin-tab-content hidden" id="usersTabContent">
+  <!-- محتوای مدیریت کاربران اینجاست -->
+</div>
+<div class="admin-tab-content hidden" id="expensesTabContent">
+  <!-- محتوای مدیریت هزینه‌ها اینجاست -->
+</div>
+<div class="admin-tab-content hidden" id="requestsTabContent">
+  <!-- محتوای درخواست‌ها اینجاست -->
+</div>
+<div class="hidden min-h-screen bg-white" id="printSummaryPage">
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+<!-- هدر صفحه پرینت -->
+<div class="text-center mb-8 border-b pb-6">
+<h1 class="text-2xl font-bold text-gray-800 mb-2">خلاصه درخواست تنخواه</h1>
+<div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mt-4">
+<div class="text-right">
+<p><strong>شماره درخواست:</strong> <span id="printRequestNumber"></span></p>
+<p><strong>کد کاربری:</strong> <span id="printUserCode"></span></p>
+<p><strong>نام مرکز:</strong> <span id="printCenterName"></span></p>
+</div>
+<div class="text-left">
+<p><strong>تاریخ:</strong> <span id="printDate"></span></p>
+<p><strong>مجموع مبلغ:</strong> <span class="text-green-600 font-semibold" id="printTotalAmount"></span></p>
+<p><strong>وضعیت:</strong> <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">در انتظار تایید</span></p>
+</div>
+</div>
+</div>
+<!-- جزئیات هزینه‌ها -->
+<!-- جدول خلاصه هزینه‌ها -->
+<div class="mb-8" id="printSummaryTable">
+<h3 class="text-lg font-semibold text-gray-800 mb-3">خلاصه هزینه‌ها:</h3>
+<div class="overflow-x-auto">
+<table class="w-full border border-gray-300 text-sm">
+<thead class="bg-gray-100">
+<tr>
+<th class="px-4 py-2 border">سرفصل هزینه</th>
+<th class="px-4 py-2 border">تعداد مدارک ضمیمه</th>
+<th class="px-4 py-2 border">جمع هزینه (ریال)</th>
+</tr>
+</thead>
+<tbody id="printSummaryBody"></tbody>
+</table>
+</div>
+</div>
+<!-- توضیحات -->
+<div class="mb-8" id="printDescriptionSection">
+<h3 class="text-lg font-semibold text-gray-800 mb-3">توضیحات:</h3>
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="text-gray-700" id="printDescription"></p>
+</div>
+</div>
+<!-- بخش امضاها -->
+<div class="mt-12 mb-8">
+<div class="grid grid-cols-2 gap-8">
+<div class="text-center">
+<div class="border-b-2 border-gray-300 pb-16 mb-4">
+<!-- فضای امضا -->
+</div>
+<p class="font-semibold text-gray-700">امضای تنخواه دار</p>
+<p class="text-sm text-gray-600 mt-1" id="signaturePettyCashHolder"></p>
+</div>
+<div class="text-center">
+<div class="border-b-2 border-gray-300 pb-16 mb-4">
+<!-- فضای امضا -->
+</div>
+<p class="font-semibold text-gray-700">امضای مدیر مرکز</p>
+<p class="text-sm text-gray-600 mt-1" id="signatureCenterManager"></p>
+</div>
+</div>
+</div>
+<!-- دکمه‌های عملیات -->
+<div class="flex justify-center gap-4 mt-8 no-print">
+<button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center" onclick="window.print()">
+<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    پرینت
+                </button>
+<button class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition" onclick="backToUserPanel()">
+                    بازگشت به داشبورد
+                </button>
+</div>
+</div>
+</div>
+</body>
+</html>

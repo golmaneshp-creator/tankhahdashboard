@@ -1,0 +1,28 @@
+body {
+            font-family: 'Tahoma', sans-serif;
+        }
+        .demo-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    
+
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                font-size: 12px;
+            }
+            table {
+                page-break-inside: avoid;
+            }
+        }
